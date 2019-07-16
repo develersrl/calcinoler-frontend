@@ -1,7 +1,10 @@
 import {
   FETCH_PLAYERS,
   FETCH_PLAYERS_SUCCESS,
-  FETCH_PLAYERS_ERROR
+  FETCH_PLAYERS_ERROR,
+  SET_DISHONORS,
+  SET_DISHONORS_SUCCESS,
+  SET_DISHONORS_ERROR
 } from "./constants";
 
 export interface Player {
@@ -11,10 +14,16 @@ export interface Player {
   dishonors: number;
 }
 
+interface PlayerState {
+  loading: boolean;
+  errors: string[];
+}
+
 export interface PlayersState {
   players: Player[];
   loading: boolean;
   errors: string[];
+  single: PlayerState;
 }
 
 interface FetchPlayersAction {
@@ -31,7 +40,30 @@ interface FetchPlayersErrorAction {
   payload: string[];
 }
 
+interface SetDishonorsPayload {
+  player_id: string;
+  dishonors: number;
+}
+
+interface SetDishonorsAction {
+  type: typeof SET_DISHONORS;
+  payload: SetDishonorsPayload;
+}
+
+interface SetDishonorsSuccessAction {
+  type: typeof SET_DISHONORS_SUCCESS;
+  payload: Player;
+}
+
+interface SetDishonorsErrorAction {
+  type: typeof SET_DISHONORS_ERROR;
+  payload: string[];
+}
+
 export type PlayersAction =
   | FetchPlayersAction
   | FetchPlayersSuccessAction
-  | FetchPlayersErrorAction;
+  | FetchPlayersErrorAction
+  | SetDishonorsAction
+  | SetDishonorsSuccessAction
+  | SetDishonorsErrorAction;
