@@ -6,22 +6,32 @@ import {
   SET_DISHONORS_SUCCESS,
   SET_DISHONORS_ERROR
 } from "./constants";
-import { Player, PlayersAction } from "./types";
+import {
+  Player,
+  FetchPlayersAction,
+  FetchPlayersSuccessAction,
+  FetchPlayersErrorAction,
+  SetDishonorsAction,
+  SetDishonorsSuccessAction,
+  SetDishonorsErrorAction
+} from "./types";
 
-export function fetchPlayers(): PlayersAction {
+export function fetchPlayers(): FetchPlayersAction {
   return {
     type: FETCH_PLAYERS
   };
 }
 
-export function fetchPlayersSuccess(players: Player[]): PlayersAction {
+export function fetchPlayersSuccess(
+  players: Player[]
+): FetchPlayersSuccessAction {
   return {
     type: FETCH_PLAYERS_SUCCESS,
     payload: players
   };
 }
 
-export function fetchPlayersError(errors: string[]): PlayersAction {
+export function fetchPlayersError(errors: string[]): FetchPlayersErrorAction {
   return {
     type: FETCH_PLAYERS_ERROR,
     payload: errors
@@ -31,7 +41,7 @@ export function fetchPlayersError(errors: string[]): PlayersAction {
 export function setDishonors(
   player_id: string,
   dishonors: number
-): PlayersAction {
+): SetDishonorsAction {
   return {
     type: SET_DISHONORS,
     payload: {
@@ -41,14 +51,14 @@ export function setDishonors(
   };
 }
 
-export function setDishonorsSuccess(player: Player): PlayersAction {
+export function setDishonorsSuccess(player: Player): SetDishonorsSuccessAction {
   return {
     type: SET_DISHONORS_SUCCESS,
     payload: player
   };
 }
 
-export function setDishonorsError(errors: string[]): PlayersAction {
+export function setDishonorsError(errors: string[]): SetDishonorsErrorAction {
   return {
     type: SET_DISHONORS_ERROR,
     payload: errors

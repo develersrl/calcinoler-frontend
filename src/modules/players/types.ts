@@ -26,16 +26,16 @@ export interface PlayersState {
   single: PlayerState;
 }
 
-interface FetchPlayersAction {
+export interface FetchPlayersAction {
   type: typeof FETCH_PLAYERS;
 }
 
-interface FetchPlayersSuccessAction {
+export interface FetchPlayersSuccessAction {
   type: typeof FETCH_PLAYERS_SUCCESS;
   payload: Player[];
 }
 
-interface FetchPlayersErrorAction {
+export interface FetchPlayersErrorAction {
   type: typeof FETCH_PLAYERS_ERROR;
   payload: string[];
 }
@@ -45,17 +45,17 @@ interface SetDishonorsPayload {
   dishonors: number;
 }
 
-interface SetDishonorsAction {
+export interface SetDishonorsAction {
   type: typeof SET_DISHONORS;
   payload: SetDishonorsPayload;
 }
 
-interface SetDishonorsSuccessAction {
+export interface SetDishonorsSuccessAction {
   type: typeof SET_DISHONORS_SUCCESS;
   payload: Player;
 }
 
-interface SetDishonorsErrorAction {
+export interface SetDishonorsErrorAction {
   type: typeof SET_DISHONORS_ERROR;
   payload: string[];
 }
