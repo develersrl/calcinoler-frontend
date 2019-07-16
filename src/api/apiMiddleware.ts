@@ -11,6 +11,7 @@ import {
 const apiMiddleware: Middleware = ({ dispatch }: MiddlewareAPI) => (
   next: Dispatch
 ) => async action => {
+  const nextAction = next(action);
   switch (action.type) {
     case FETCH_PLAYERS:
       try {
@@ -32,7 +33,7 @@ const apiMiddleware: Middleware = ({ dispatch }: MiddlewareAPI) => (
       }
       break;
   }
-  return next(action);
+  return nextAction;
 };
 
 export default apiMiddleware;
