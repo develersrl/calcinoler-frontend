@@ -17,16 +17,16 @@ export interface PlayersState {
   errors: string[];
 }
 
-interface FetchPlayersAction {
+export interface FetchPlayersAction {
   type: typeof FETCH_PLAYERS;
 }
 
-interface FetchPlayersSuccessAction {
+export interface FetchPlayersSuccessAction {
   type: typeof FETCH_PLAYERS_SUCCESS;
   payload: Player[];
 }
 
-interface FetchPlayersErrorAction {
+export interface FetchPlayersErrorAction {
   type: typeof FETCH_PLAYERS_ERROR;
   payload: string[];
 }
