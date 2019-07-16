@@ -75,7 +75,8 @@ export default function playersReducer(
         ...state,
         single: {
           ...state.single,
-          errors: action.payload
+          errors: action.payload,
+          loading: false
         }
       };
     default:
