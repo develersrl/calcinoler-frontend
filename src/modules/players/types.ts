@@ -14,15 +14,19 @@ export interface Player {
   dishonors: number;
 }
 
+export interface PlayerErrors {
+  [field: string]: string[];
+}
+
 interface PlayerState {
   loading: boolean;
-  errors: string[];
+  errors: PlayerErrors;
 }
 
 export interface PlayersState {
   players: Player[];
   loading: boolean;
-  errors: string[];
+  errors: PlayerErrors;
   single: PlayerState;
 }
 
@@ -37,7 +41,7 @@ export interface FetchPlayersSuccessAction {
 
 export interface FetchPlayersErrorAction {
   type: typeof FETCH_PLAYERS_ERROR;
-  payload: string[];
+  payload: PlayerErrors;
 }
 
 interface SetDishonorsPayload {
@@ -57,7 +61,7 @@ export interface SetDishonorsSuccessAction {
 
 export interface SetDishonorsErrorAction {
   type: typeof SET_DISHONORS_ERROR;
-  payload: string[];
+  payload: PlayerErrors;
 }
 
 export type PlayersAction =

@@ -8,6 +8,7 @@ import {
 } from "./constants";
 import {
   Player,
+  PlayerErrors,
   FetchPlayersAction,
   FetchPlayersSuccessAction,
   FetchPlayersErrorAction,
@@ -31,7 +32,9 @@ export function fetchPlayersSuccess(
   };
 }
 
-export function fetchPlayersError(errors: string[]): FetchPlayersErrorAction {
+export function fetchPlayersError(
+  errors: PlayerErrors
+): FetchPlayersErrorAction {
   return {
     type: FETCH_PLAYERS_ERROR,
     payload: errors
@@ -58,7 +61,9 @@ export function setDishonorsSuccess(player: Player): SetDishonorsSuccessAction {
   };
 }
 
-export function setDishonorsError(errors: string[]): SetDishonorsErrorAction {
+export function setDishonorsError(
+  errors: PlayerErrors
+): SetDishonorsErrorAction {
   return {
     type: SET_DISHONORS_ERROR,
     payload: errors

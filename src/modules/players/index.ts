@@ -10,11 +10,11 @@ import { PlayersState, PlayersAction, Player } from "./types";
 
 const initialState: PlayersState = {
   players: [],
-  errors: [],
+  errors: {},
   loading: false,
   single: {
     loading: false,
-    errors: []
+    errors: {}
   }
 };
 
@@ -32,7 +32,7 @@ export default function playersReducer(
       return {
         ...state,
         players: action.payload,
-        errors: [],
+        errors: {},
         loading: false
       };
     case FETCH_PLAYERS_ERROR:
@@ -67,7 +67,7 @@ export default function playersReducer(
         single: {
           ...state.single,
           loading: false,
-          errors: []
+          errors: {}
         }
       };
     case SET_DISHONORS_ERROR:
