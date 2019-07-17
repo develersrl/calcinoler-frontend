@@ -18,7 +18,15 @@ const apiMiddleware: Middleware = ({ dispatch }: MiddlewareAPI) => (
         const players = await getPlayers();
         dispatch(fetchPlayersSuccess(players));
       } catch (e) {
-        dispatch(fetchPlayersError(e.errors));
+        if (e.details) {
+          dispatch(fetchPlayersError(e.details));
+        } else {
+          dispatch(
+            fetchPlayersError({
+              general: [e.message]
+            })
+          );
+        }
       }
       break;
     case SET_DISHONORS:
