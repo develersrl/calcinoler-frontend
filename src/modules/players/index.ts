@@ -8,7 +8,7 @@ import {
 } from "./constants";
 import { PlayersState, PlayersAction, Player } from "./types";
 
-const initialState: PlayersState = {
+export const initialState: PlayersState = {
   players: [],
   errors: {},
   loading: false,
