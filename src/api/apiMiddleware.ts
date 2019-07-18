@@ -38,10 +38,10 @@ const apiMiddleware: Middleware = ({ dispatch }: MiddlewareAPI) => (
         dispatch(setDishonorsSuccess(player));
       } catch (e) {
         if (e.details) {
-          dispatch(fetchPlayersError(e.details));
+          dispatch(setDishonorsError(e.details));
         } else {
           dispatch(
-            fetchPlayersError({
+            setDishonorsError({
               general: [e.message]
             })
           );
