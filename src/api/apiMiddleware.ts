@@ -37,7 +37,15 @@ const apiMiddleware: Middleware = ({ dispatch }: MiddlewareAPI) => (
         );
         dispatch(setDishonorsSuccess(player));
       } catch (e) {
-        dispatch(setDishonorsError(e.errors));
+        if (e.details) {
+          dispatch(fetchPlayersError(e.details));
+        } else {
+          dispatch(
+            fetchPlayersError({
+              general: [e.message]
+            })
+          );
+        }
       }
       break;
   }
