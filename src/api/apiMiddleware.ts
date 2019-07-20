@@ -15,7 +15,7 @@ const apiMiddleware: Middleware = ({ dispatch }: MiddlewareAPI) => (
   switch (action.type) {
     case FETCH_PLAYERS:
       try {
-        const players = await getPlayers();
+        const players = await getPlayers(action.payload);
         dispatch(fetchPlayersSuccess(players));
       } catch (e) {
         if (e.details) {

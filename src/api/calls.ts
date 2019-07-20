@@ -3,8 +3,8 @@ import { Player } from "../modules/players/types";
 
 const PLAYER_API_URL = process.env.REACT_APP_API_BASE_URL + "/players";
 
-export const getPlayers = async (): Promise<Player[]> => {
-  const response = await fetch(PLAYER_API_URL);
+export const getPlayers = async (searchTerm = ""): Promise<Player[]> => {
+  const response = await fetch(`${PLAYER_API_URL}?s=${searchTerm}`);
   const result = await response.json();
   if (!response.ok) {
     const err = {

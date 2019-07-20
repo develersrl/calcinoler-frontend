@@ -32,6 +32,7 @@ export interface PlayersState {
 
 export interface FetchPlayersAction {
   type: typeof FETCH_PLAYERS;
+  payload: string;
 }
 
 export interface FetchPlayersSuccessAction {

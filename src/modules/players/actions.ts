@@ -17,9 +17,10 @@ import {
   SetDishonorsErrorAction
 } from "./types";
 
-export function fetchPlayers(): FetchPlayersAction {
+export function fetchPlayers(searchTerm = ""): FetchPlayersAction {
   return {
-    type: FETCH_PLAYERS
+    type: FETCH_PLAYERS,
+    payload: searchTerm
   };
 }
 
