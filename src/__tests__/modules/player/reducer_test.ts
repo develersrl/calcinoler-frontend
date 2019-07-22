@@ -25,7 +25,8 @@ import { createDummyPlayer, createDummyErrors } from "../../utils";
 describe("players reducer", () => {
   it("Handle FETCH_PLAYERS", () => {
     const action: FetchPlayersAction = {
-      type: FETCH_PLAYERS
+      type: FETCH_PLAYERS,
+      payload: ""
     };
     const expectedState: PlayersState = {
       ...initialState,

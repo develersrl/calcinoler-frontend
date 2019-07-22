@@ -8,7 +8,6 @@ import {
 } from "../../../modules/players/constants";
 
 import {
-  Player,
   FetchPlayersAction,
   FetchPlayersSuccessAction,
   FetchPlayersErrorAction,
@@ -32,9 +31,18 @@ import { createDummyPlayer, createDummyErrors } from "../../utils";
 describe("actions", () => {
   it("fetchPlayers action creator", () => {
     const expectedAction: FetchPlayersAction = {
-      type: FETCH_PLAYERS
+      type: FETCH_PLAYERS,
+      payload: ""
     };
     expect(fetchPlayers()).toEqual(expectedAction);
+  });
+
+  it("fetchPlayers action creator with searchTerm", () => {
+    const expectedAction: FetchPlayersAction = {
+      type: FETCH_PLAYERS,
+      payload: "search string"
+    };
+    expect(fetchPlayers("search string")).toEqual(expectedAction);
   });
 
   it("fetchPlayersSuccess action creator", () => {
