@@ -18,15 +18,15 @@ const apiMiddleware: Middleware = ({ dispatch }: MiddlewareAPI) => (
         const players = await getPlayers(action.payload);
         dispatch(fetchPlayersSuccess(players));
       } catch (e) {
+        let errors;
         if (e.details) {
-          dispatch(fetchPlayersError(e.details));
+          errors = e.details;
         } else {
-          dispatch(
-            fetchPlayersError({
-              general: [e.message]
-            })
-          );
+          errors = {
+            general: [e.message]
+          };
         }
+        dispatch(fetchPlayersError(errors));
       }
       break;
     case SET_DISHONORS:
@@ -37,15 +37,15 @@ const apiMiddleware: Middleware = ({ dispatch }: MiddlewareAPI) => (
         );
         dispatch(setDishonorsSuccess(player));
       } catch (e) {
+        let errors;
         if (e.details) {
-          dispatch(setDishonorsError(e.details));
+          errors = e.details;
         } else {
-          dispatch(
-            setDishonorsError({
-              general: [e.message]
-            })
-          );
+          errors = {
+            general: [e.message]
+          };
         }
+        dispatch(setDishonorsError(errors));
       }
       break;
   }
