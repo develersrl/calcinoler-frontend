@@ -1,0 +1,48 @@
+$color: #2b5876;
+$grandient: $color 0%, #4e4376 51%, $color;
+
+.PlayerDishonorableContainer {
+  position: relative;
+
+  button {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+
+    display: block;
+    border-radius: 100%;
+    top: 50%;
+    outline: none;
+    color: #fff;
+    font-size: 35px;
+    cursor: pointer;
+
+    background: {
+      color: $color;
+      size: 200% auto;
+      image: linear-gradient(to right, $grandient);
+    }
+
+    box-shadow: 0 0 0 $color, 0 3px 10px rgba($color, 0.15),
+      0 0px 10px rgba($color, 0.15), 0 0px 4px rgba(darken($color, 80%), 0.35),
+      0 5px 20px rgba($color, 0.25), 0 15px 40px rgba($color, 0.75),
+      inset 0 0 15px rgba(#ffffff, 0.05);
+    transition: all 1s ease;
+
+    &:hover,
+    &:focus {
+      outline: none;
+      background-position: right;
+    }
+
+    &.minus {
+      right: 0;
+      transform: translate(50%, -50%);
+    }
+
+    &.plus {
+      left: 0;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

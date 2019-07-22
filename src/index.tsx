@@ -7,8 +7,10 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 
 import store from "./store";
 
+import "./_base.scss";
+
 import App from "./components/App";
-import Home from "./containers/Home";
+import Home from "./components/Home";
 
 const routes = (
   <Router>
