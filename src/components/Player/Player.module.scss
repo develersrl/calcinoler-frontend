@@ -1,0 +1,63 @@
+$radius: 10px;
+
+.Player {
+  background: #fff;
+  border-radius: $radius;
+  z-index: 1;
+  box-shadow: 0 0 5px rgba(black, 0.1);
+
+  &Body {
+    background: #fff;
+    border-radius: $radius;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+
+    &Infos {
+      color: #5e5e5e;
+      text-align: center;
+      margin-bottom: 20px;
+
+      &Name,
+      &Nick {
+        display: block;
+        padding: 0.5em 0;
+        padding-top: 0;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 800;
+      }
+      &Nick {
+        font-size: 14px;
+        font-weight: 300;
+      }
+    }
+
+    &StatsHolder {
+      display: flex;
+
+      &Stats {
+        flex: 1;
+        text-align: center;
+
+        strong {
+          display: block;
+          width: 100%;
+          color: #b3b1b2;
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: -0.2px;
+        }
+
+        span {
+          font-size: 26px;
+          color: #5e5e5e;
+          padding: 0.18em 0;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

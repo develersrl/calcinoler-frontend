@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
-import { AppState } from "../modules";
+import { AppState } from "../../modules";
+import { fetchPlayers } from "../../modules/players/actions";
 
-import Home from "../components/Home";
+import PlayerList from "../../components/PlayerList";
 
 const mapStateToProps = (state: AppState) => ({
   players: state.players.players,
@@ -9,9 +10,11 @@ const mapStateToProps = (state: AppState) => ({
   errors: state.players.errors
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  fetchPlayers
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home);
+)(PlayerList);
