@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 import { setDishonors } from "../../modules/players/actions";
@@ -7,6 +7,7 @@ import Player from "../../components/Player";
 import { Player as PlayerSchema } from "../../modules/players/types";
 
 import styles from "./PlayerDishonorable.module.scss";
+import { useDebouncedCallback } from "use-debounce";
 
 const mapStateToProps = () => ({});
 
@@ -19,23 +20,51 @@ type IProps = {
   setDishonors: typeof setDishonors;
 };
 
-const PlayerDishonorable: React.FC<IProps> = ({ player, setDishonors }) => (
-  <div className={styles.PlayerDishonorableContainer}>
-    <button
-      className={styles.plus}
-      onClick={() => setDishonors(player.slack_id, player.dishonors + 1)}
-    >
-      +
-    </button>
-    <Player {...player} url={process.env.REACT_APP_SLACK_CHAT_URL} />
-    <button
-      className={styles.minus}
-      onClick={() => setDishonors(player.slack_id, player.dishonors - 1)}
-    >
-      -
-    </button>
-  </div>
-);
+const PlayerDishonorable: React.FC<IProps> = ({ player, setDishonors }) => {
+  const [localDishonors, setLocalDishonors] = useState(player.dishonors);
+
+  const [
+    debouncedSetDishonors,
+    cancelDebouncedSetDishonors
+  ] = useDebouncedCallback((dishonors: number) => {
+    setDishonors(player.slack_id, dishonors);
+  }, 2000);
+
+  useEffect(() => {
+    debouncedSetDishonors(localDishonors);
+    if (localDishonors === player.dishonors) {
+      cancelDebouncedSetDishonors();
+    }
+  }, [
+    localDishonors,
+    player.dishonors,
+    debouncedSetDishonors,
+    cancelDebouncedSetDishonors
+  ]);
+
+  return (
+    <div className={styles.PlayerDishonorableContainer}>
+      <button
+        className={styles.plus}
+        onClick={() => setLocalDishonors(localDishonors + 1)}
+      >
+        +
+      </button>
+      <Player
+        {...player}
+        dishonors={localDishonors}
+        url={process.env.REACT_APP_SLACK_CHAT_URL}
+      />
+      <button
+        disabled={localDishonors <= 0}
+        className={styles.minus}
+        onClick={() => setLocalDishonors(localDishonors - 1)}
+      >
+        -
+      </button>
+    </div>
+  );
+};
 
 export default connect(
   mapStateToProps,
