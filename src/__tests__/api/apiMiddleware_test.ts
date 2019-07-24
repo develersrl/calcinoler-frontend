@@ -33,19 +33,13 @@ const create = () => {
 };
 
 describe("API Middleware", () => {
-  it("next action call", () => {
+  it("next action called one", () => {
     const { next, invoke } = create();
     const action = { type: "TEST ACTION" };
 
     invoke(action);
 
     expect(next).toHaveBeenCalledWith(action);
-  });
-
-  it("next action called once", () => {
-    const { next, invoke } = create();
-    const action = { type: "TEST ACTION" };
-    invoke(action);
     expect(next).toHaveBeenCalledTimes(1);
   });
 
