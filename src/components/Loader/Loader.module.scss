@@ -1,0 +1,41 @@
+$width: 100;
+$color: lightBlue;
+
+.Loader {
+  width: $width + 0px;
+  height: ($width / 3) - 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  & > div {
+    will-change: transform;
+    height: ($width / 3) - 10px;
+    width: ($width / 3) - 10px;
+    border-radius: 50%;
+    background-color: $color;
+    position: absolute;
+    animation: grow 1s ease-in-out infinite alternate;
+
+    &:first-child {
+      left: 0;
+      transform-origin: 100% 50%;
+    }
+    &:nth-child(2) {
+      left: 50%;
+      transform: translateX(-50%) scale(1);
+      animation-delay: 0.33s;
+    }
+    &:last-child {
+      right: 0;
+      animation-delay: 0.66s;
+    }
+  }
+}
+
+@keyframes grow {
+  to {
+    transform: translateX(-50%) scale(0);
+  }
+}

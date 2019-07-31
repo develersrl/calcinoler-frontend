@@ -1,0 +1,100 @@
+$color: #fff;
+$closedDimensions: 56px;
+$openedWidth: 550px;
+
+@mixin openedWidth() {
+  width: $openedWidth;
+
+  @media only screen and (max-width: 700px) {
+    width: 300px;
+  }
+}
+
+.SearchBoxContainer {
+  margin: 25px 0;
+
+  .SearchBox {
+    @include openedWidth();
+    height: $closedDimensions;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+
+    input {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      outline: none;
+      width: $closedDimensions;
+      z-index: 1;
+      position: relative;
+      line-height: $closedDimensions;
+      font-size: 0;
+      -webkit-appearance: none;
+      transition: all 0.6s ease;
+      cursor: pointer;
+      color: $color;
+      opacity: 0;
+
+      &::placeholder {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        color: $color;
+      }
+
+      &:focus::placeholder {
+        opacity: 0.4;
+      }
+      &:focus {
+        cursor: text;
+        @include openedWidth();
+        border-color: $color;
+        font-size: 25px;
+        opacity: 1;
+      }
+    }
+
+    .SearchIcon {
+      position: absolute;
+      width: $closedDimensions;
+      height: $closedDimensions;
+      top: 50%;
+      right: 50%;
+      transform: translate(50%, -50%);
+      transition: all 0.5s;
+
+      &::before {
+        content: "";
+        position: absolute;
+        margin: auto;
+        top: 22px;
+        right: 0;
+        bottom: 0;
+        left: 22px;
+        width: 12px;
+        height: 2px;
+        background: $color;
+        transform: rotate(45deg);
+        transition: all 0.5s;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        margin: auto;
+        top: -5px;
+        right: 0;
+        bottom: 0;
+        left: -5px;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: 2px solid $color;
+        transition: all 0.5s;
+      }
+    }
+
+    input:focus ~ .SearchIcon {
+      opacity: 0;
+    }
+  }
+}
