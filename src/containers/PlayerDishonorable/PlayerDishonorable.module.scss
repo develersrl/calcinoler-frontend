@@ -38,11 +38,30 @@ $grandient: $color 0%, #4e4376 51%, $color;
     &.minus {
       right: 0;
       transform: translate(50%, -50%);
+      &::after {
+        content: none;
+      }
     }
 
     &.plus {
       left: 0;
       transform: translate(-50%, -50%);
+      &::after {
+        transform: translate(50%, -50%) rotate(90deg);
+      }
+    }
+
+    &::before,
+    &:after {
+      position: absolute;
+      width: 20px;
+      background-color: #fff;
+      height: 5px;
+      content: "";
+      transform: translate(50%, -50%);
+      top: 50%;
+      right: 50%;
+      border-radius: 25%;
     }
   }
 }

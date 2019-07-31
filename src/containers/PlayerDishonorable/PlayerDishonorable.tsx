@@ -47,9 +47,7 @@ const PlayerDishonorable: React.FC<IProps> = ({ player, setDishonors }) => {
       <button
         className={styles.plus}
         onClick={() => setLocalDishonors(localDishonors + 1)}
-      >
-        +
-      </button>
+      />
       <Player
         {...player}
         dishonors={localDishonors}
@@ -59,9 +57,7 @@ const PlayerDishonorable: React.FC<IProps> = ({ player, setDishonors }) => {
         disabled={localDishonors <= 0}
         className={styles.minus}
         onClick={() => setLocalDishonors(localDishonors - 1)}
-      >
-        -
-      </button>
+      />
     </div>
   );
 };
