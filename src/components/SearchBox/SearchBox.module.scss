@@ -23,6 +23,7 @@ $openedWidth: 550px;
     input {
       background: none;
       border: none;
+      border-bottom: 2px solid transparent;
       outline: none;
       width: $closedDimensions;
       z-index: 1;
@@ -47,7 +48,7 @@ $openedWidth: 550px;
       &:focus {
         cursor: text;
         @include openedWidth();
-        border-bottom: 2px solid $color;
+        border-color: $color;
         font-size: 25px;
         opacity: 1;
       }
